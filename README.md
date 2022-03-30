@@ -1,4 +1,11 @@
-# NgRxJs
+# RxJS 7 Observables
+
+Using typescript to create example RxJS features such as:
+- Observables
+- Subscriptions
+- Operators
+- Pipeable Operators
+- Subjects
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
 
