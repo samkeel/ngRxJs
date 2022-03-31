@@ -11,15 +11,28 @@ export class RxjsObservablesComponent implements OnInit {
 
   observable$ = new Observable<string>((subscriber) => {
     console.log('Observable executed');
-    subscriber.next('Alice');
-    setTimeout(() => subscriber.next('Ben'), 2000);
-    setTimeout(() => subscriber.next('Charlie'), 4000);
+    subscriber.next('Shona');
+    setTimeout(() => subscriber.next('Blake'), 2000);
+    setTimeout(() => subscriber.next('Sasha'), 4000);
+    setTimeout(() => subscriber.error(new Error('Failure')), 5000);
+
+    return () => {
+      console.log('Teardown');
+    }
   });
 
   ngOnInit(): void {
-    console.log('Subscription 1 starts');
-    this.observable$.subscribe((value) =>
-      console.log('Subscription 1:', value)
-    );
   }
+  
+  clickObserver() {
+    this.observable$.subscribe({
+      next: value => console.log(value),
+      error: err => console.log(err.message),
+      complete: () => console.log('Completed')
+    });
+  }
+
+
+
+
 }
